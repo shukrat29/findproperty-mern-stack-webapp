@@ -8,7 +8,7 @@ const Header = () => {
     <header className="bg-slate-200 shadow-md p-3">
       <div className="flex p-3 justify-between flex-col space-y-6 px-4 md:flex-row md:space-y-0 ">
         <Link to="/">
-          <h1 className="font-bold text-sm sm:text-xl flex flex-wrap">
+          <h1 className="font-bold text-lg sm:text-xl flex flex-wrap">
             <span className="text-slate-500">EasyHome</span>
             <span className="text-slate-700">Finder</span>
           </h1>
@@ -34,6 +34,9 @@ const Header = () => {
               </Link>
               <Link to="/about">
                 <li className="hidden sm:inline hover:underline">About</li>
+              </Link>
+              <Link to="/signup">
+                <li className=" sm:inline hover:underline">Sign Up</li>
               </Link>
               <Link to="/signin">
                 <li className=" sm:inline hover:underline">Sign In</li>
