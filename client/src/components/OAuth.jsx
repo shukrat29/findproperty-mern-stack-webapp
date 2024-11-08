@@ -14,7 +14,7 @@ const OAuth = () => {
       const auth = getAuth(app);
       // Getting user details from google
       const result = await signInWithPopup(auth, provider);
-      //   console.log(result);
+      console.log(result);
 
       //   giving this data to backend which will store in database  or simply signing in
       const res = await fetch("/api/auth/google", {

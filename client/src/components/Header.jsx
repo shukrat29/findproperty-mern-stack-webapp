@@ -2,8 +2,12 @@ import React from "react";
 
 import { CiSearch } from "react-icons/ci";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Header = () => {
+  // getting current user from redux store
+  const { currentUser } = useSelector((state) => state.user);
+  console.log(currentUser);
   return (
     <header className="bg-slate-200 shadow-md p-3">
       <div className="flex p-3 justify-between flex-col space-y-6 px-4 md:flex-row md:space-y-0 ">
@@ -28,7 +32,7 @@ const Header = () => {
             </form>
           </div>
           <div>
-            <ul className="flex gap-3">
+            <ul className="flex gap-3 items-center">
               <Link to="/">
                 <li className="hidden sm:inline hover:underline">Home</li>
               </Link>
@@ -36,10 +40,21 @@ const Header = () => {
                 <li className="hidden sm:inline hover:underline">About</li>
               </Link>
               <Link to="/signup">
-                <li className=" sm:inline hover:underline">Sign Up</li>
+                {!currentUser && (
+                  <li className=" sm:inline hover:underline">Sign Up</li>
+                )}
               </Link>
-              <Link to="/signin">
-                <li className=" sm:inline hover:underline">Sign In</li>
+              <Link to="/profile">
+                {currentUser ? (
+                  <img
+                    src={currentUser.avatar}
+                    alt="User Avatar"
+                    className="w-10 h-10 rounded-full"
+                  />
+                ) : (
+                  // <p>Welcome, {currentUser.username.split(" ")[0]}</p>
+                  <li className=" sm:inline hover:underline">Sign In</li>
+                )}
               </Link>
             </ul>
           </div>
