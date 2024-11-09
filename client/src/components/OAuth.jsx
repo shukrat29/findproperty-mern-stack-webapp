@@ -33,7 +33,7 @@ const OAuth = () => {
       dispatch(signInSuccess(data));
       navigate("/");
     } catch (error) {
-      console.log("Could not sign in with goofle", error);
+      console.log("Could not sign in with google", error);
     }
   };
   return (
