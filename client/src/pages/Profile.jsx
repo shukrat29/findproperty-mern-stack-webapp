@@ -3,42 +3,39 @@ import { useSelector } from "react-redux";
 
 const Profile = () => {
   const { currentUser } = useSelector((state) => state.user);
-
-  const handleLogout = () => {
-    console.log("logout button clicked");
-  };
   return (
-    <div className="flex flex-col max-w-lg mx-auto items-center">
-      <h1 className="text-center font-serif font-semibold my-6">My Profile</h1>
-      <form action="flex flex-col items-center">
-        <div className="flex flex-col items-center space-y-4">
-          <img className="rounded-full self-center" src={currentUser.avatar} />
-          <input
-            type="text"
-            placeholder="username"
-            id="username"
-            className="border p-2 w-80 rounded-lg"
-          />
-          <input
-            type="email"
-            id="email"
-            placeholder="email"
-            className="border p-2 w-80 rounded-lg"
-          />
-          <input
-            type="text"
-            placeholder="password"
-            id="password"
-            className="border p-2 w-80 rounded-lg"
-          />
-          <button className="bg-slate-600 hover:opacity-80 p-2 w-80 text-white rounded-lg my-5">
-            Update
-          </button>
-        </div>
+    <div className="p-3 max-w-lg mx-auto">
+      <h1 className="text-lg font-semibold text-center my-7">My Profile</h1>
+      <form className="flex flex-col gap-4">
+        <img
+          className="rounded-full h-24 w-24 object-cover cursor-pointer self-center mt-2"
+          src={currentUser.avatar}
+        />
+        <input
+          type="text"
+          placeholder="enter username"
+          id="username"
+          className="border p-2 rounded-lg"
+        />
+        <input
+          type="text"
+          placeholder="enter email"
+          id="email"
+          className="border p-2 rounded-lg"
+        />
+        <input
+          type="text"
+          placeholder="enter password"
+          id="password"
+          className="border p-2 rounded-lg"
+        />
+        <button className="bg-slate-700 text-white uppercase rounded-lg p-3">
+          Update
+        </button>
       </form>
-      <div className="flex justify-between mt-5 gap-10 text-red-600 cursor-pointer">
-        <span>Delete Account</span>
-        <span onClick={handleLogout}>Logout</span>
+      <div className="flex justify-between mt-5">
+        <span className="text-red-700 cursor-pointer">Delete Account</span>
+        <span className="text-red-700 cursor-pointer">Log Out</span>
       </div>
     </div>
   );
