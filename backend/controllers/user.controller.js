@@ -1,9 +1,9 @@
-import { errorHandler } from "../utils/error";
+import { errorHandler } from "../utils/error.js";
 import bcryptjs from "bcryptjs";
-import User from "../models/user.model";
+import User from "../models/user.model.js";
 
-export const updateUser = async (req, res) => {
-  if (req.user.id === req.params.id)
+export const updateUser = async (req, res, next) => {
+  if (req.user.id !== req.params.id)
     return next(errorHandler(401, "You can only update your own account"));
   try {
     if (req.body.password) {
@@ -24,6 +24,15 @@ export const updateUser = async (req, res) => {
     );
     const { password, ...rest } = updatedUser._doc;
     res.status(200).json(rest);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const deleteUser = async (req, res, next) => {
+  if (req.user.id !== req.params.id)
+    return next(errorHandler(401, "You can only delete your own account"));
+  try {
   } catch (error) {
     next(error);
   }
