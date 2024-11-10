@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 const Header = () => {
   // getting current user from redux store
   const { currentUser } = useSelector((state) => state.user);
-  console.log(currentUser);
+
   return (
     <header className="bg-slate-200 shadow-md p-3">
       <div className="flex p-3 justify-between flex-col space-y-6 px-4 md:flex-row md:space-y-0 ">
@@ -45,15 +45,14 @@ const Header = () => {
                 )}
               </Link>
               <Link to="/profile">
-                {currentUser ? (
+                {currentUser && currentUser.avatar ? (
                   <img
                     src={currentUser.avatar}
                     alt="User Avatar"
                     className="w-10 h-10 rounded-full"
                   />
                 ) : (
-                  // <p>Welcome, {currentUser.username.split(" ")[0]}</p>
-                  <li className=" sm:inline hover:underline">Sign In</li>
+                  <li className="sm:inline hover:underline">Sign In</li>
                 )}
               </Link>
             </ul>

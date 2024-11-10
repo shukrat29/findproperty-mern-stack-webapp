@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 import userRouter from "./routes/user.route.js";
 import authRouter from "./routes/auth.route.js";
 import connectDB from "./config/db.js";
+import listingRouter from "./routes/listing.route.js";
 dotenv.config();
 
 connectDB();
@@ -31,6 +32,7 @@ app.use((req, res, next) => {
 // Routes
 app.use("/api/user", userRouter);
 app.use("/api/auth", authRouter);
+app.use("/api/listing", listingRouter);
 
 // middleware to handle error
 app.use((err, req, res, next) => {
