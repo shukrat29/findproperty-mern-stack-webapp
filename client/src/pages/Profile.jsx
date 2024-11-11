@@ -29,6 +29,8 @@ const Profile = () => {
   const [fileUploadError, setFileUploadError] = useState(false);
   const [formData, setFormData] = useState({});
   const [updateSuccess, setUpdateSuccess] = useState(false);
+  const [showListingsError, setShowListingsError] = useState(false);
+  const [userListings, setUserListings] = useState([]);
   console.log(formData);
   const dispatch = useDispatch();
 
@@ -125,6 +127,23 @@ const Profile = () => {
       dispatch(logOutUserFailure(data.message));
     }
   };
+
+  const handlwShowListings = async () => {
+    try {
+      const res = await fetch(`/api/user/listings/${currentUser._id}`);
+      console.log(res);
+      const data = await res.json();
+      console.log(data);
+      if (data.success === false) {
+        setShowListingsError(true);
+        return;
+      }
+      setUserListings(data);
+    } catch (error) {
+      setShowListingsError(true);
+    }
+  };
+
   return (
     <div className="p-3 max-w-lg mx-auto">
       <h1 className="text-lg font-semibold text-center my-7">My Profile</h1>
@@ -205,6 +224,37 @@ const Profile = () => {
       <p className="text-green-700 mt-5">
         {updateSuccess ? "User is updated successfully" : ""}
       </p>
+      <button onClick={handlwShowListings} className="text-green-700 w-full">
+        My Listings
+      </button>
+      <p className="text-red-700 mt-5">
+        {showListingsError ? "Error showing listings" : ""}
+      </p>
+      {userListings &&
+        userListings.length > 0 &&
+        userListings.map((listing) => (
+          <div
+            className="flex items-center p-3 border justify-between gap-4"
+            key={listing._id}
+          >
+            <Link to={`/listing/${listing._id}`}>
+              <img
+                src={listing.imageUrls[0]}
+                alt="listing cover"
+                className="h-16 w-16 object-contain rounded-lg"
+              />
+            </Link>
+            <Link className="flex-1" to={`/listing/${listing._id}`}>
+              <p className="text-slate-700 font-semibold flex-1 hover:underline truncate">
+                {listing.name}
+              </p>
+            </Link>
+            <div className="gap-2">
+              <button className="text-red-700">Delete</button>
+              <button className="ml-2">Edit</button>
+            </div>
+          </div>
+        ))}
     </div>
   );
 };
