@@ -4,7 +4,15 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore from "swiper";
 import { Navigation } from "swiper/modules";
 import "swiper/css/bundle";
-import { FaBed, FaMapMarkedAlt, FaMapMarkerAlt, FaShare } from "react-icons/fa";
+import {
+  FaBath,
+  FaBed,
+  FaChair,
+  FaMapMarkedAlt,
+  FaMapMarkerAlt,
+  FaParking,
+  FaShare,
+} from "react-icons/fa";
 // import "swiper/css";
 // import "swiper/css/navigation";
 
@@ -73,7 +81,7 @@ const Listing = () => {
               Link copied!
             </p>
           )}
-          <div className="flex flex-col max-w-4xl mx-auto p-2 my-6 gap-6">
+          <div className="flex flex-col max-w-4xl mx-auto p-2 my-6 gap-4">
             <p className="text-lg font-semibold">
               {listing.name} - ${" "}
               {listing.offer
@@ -100,7 +108,7 @@ const Listing = () => {
               <h3 className="font-semibold">Description:</h3>
               {listing.description}
             </div>
-            <ul>
+            <ul className="text-green-900 font-semibold text-sm flex gap-4 flex-wrap">
               <li className="flex items-center gap-2">
                 <FaBed className="text-lg" />
                 <p>
@@ -108,6 +116,22 @@ const Listing = () => {
                     ? `${listing.bedrooms} beds`
                     : `${listing.bedrooms} bed`}
                 </p>
+              </li>
+              <li className="flex items-center gap-2">
+                <FaBath className="text-lg" />
+                <p>
+                  {listing.bathrooms > 1
+                    ? `${listing.bathrooms} baths`
+                    : `${listing.bathrooms} bath`}
+                </p>
+              </li>
+              <li className="flex items-center gap-2">
+                <FaParking className="text-lg" />
+                <p>{listing.parking ? "Parking" : "No Parking"}</p>
+              </li>
+              <li className="flex items-center gap-2">
+                <FaChair className="text-lg" />
+                <p>{listing.furnished ? "Furnished" : "Unfurnished"}</p>
               </li>
             </ul>
           </div>
