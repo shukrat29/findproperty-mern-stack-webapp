@@ -39,6 +39,7 @@ export default function UpdateListing() {
       const listingId = params.listingId;
       const res = await fetch(`/api/listing/get/${listingId}`);
       const data = await res.json();
+      console.log(data);
       if (data.success === false) {
         console.log(data.message);
         return;
@@ -46,7 +47,7 @@ export default function UpdateListing() {
       setFormData(data);
     };
     fetchListing();
-  });
+  }, []);
   const handleImageSubmit = (e) => {
     if (files.length > 0 && files.length + formData.imageUrls.length < 7) {
       setUploading(true);
