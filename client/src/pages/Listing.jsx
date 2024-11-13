@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore from "swiper";
 import { Navigation } from "swiper/modules";
@@ -9,7 +9,6 @@ import {
   FaBath,
   FaBed,
   FaChair,
-  FaMapMarkedAlt,
   FaMapMarkerAlt,
   FaParking,
   FaShare,
@@ -28,6 +27,7 @@ const Listing = () => {
   const params = useParams();
 
   const { currentUser } = useSelector((state) => state.user);
+  console.log(currentUser.name);
 
   useEffect(() => {
     const fetchListing = async () => {
@@ -90,7 +90,7 @@ const Listing = () => {
             <p className="text-lg font-semibold">
               {listing.name} - ${" "}
               {listing.offer
-                ? listing?.discountPrice?.toLocaleString("en-US")
+                ? listing?.discountedPrice?.toLocaleString("en-US")
                 : listing?.regularPrice?.toLocaleString("en-US")}
               {listing.type === "rent" && "/month"}
             </p>
@@ -102,9 +102,9 @@ const Listing = () => {
               <p className="bg-red-900 w-full max-w-[160px] text-white text-center p-1 rounded-lg">
                 {listing.type === "rent" ? "For Rent" : "For Sale"}
               </p>
-              {listing.offer && (
-                <p className="bg-green-900 w-full max-w-[160px] text-white text-center p-1 rounded-lg">
-                  ${+listing.regularPrice - +listing.discountPrice}
+              {listing?.offer && (
+                <p className="bg-green-900 w-full max-w-[200px] text-white text-center p-1 rounded-md">
+                  ${+listing.regularPrice - +listing.discountedPrice} OFF
                 </p>
               )}
             </div>
