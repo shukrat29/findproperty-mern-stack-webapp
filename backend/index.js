@@ -7,6 +7,7 @@ import authRouter from "./routes/auth.route.js";
 import connectDB from "./config/db.js";
 import listingRouter from "./routes/listing.route.js";
 dotenv.config();
+import path from "path";
 
 connectDB();
 
