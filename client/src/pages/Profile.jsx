@@ -218,10 +218,10 @@ const Profile = () => {
           disabled={loading}
           className="bg-slate-700 text-white uppercase rounded-lg p-3"
         >
-          {loading ? "Loading..." : "Update"}
+          {loading ? "Loading..." : "Update Profile"}
         </button>
         <Link
-          className="bg-green-700 text-white p-2 rounded-lg uppercase text-center hover:opacity-95"
+          className="bg-red-500 text-white p-2 rounded-lg uppercase text-center hover:opacity-95"
           to="/create-listing"
         >
           Create Listing

@@ -303,7 +303,7 @@ export default function UpdateListing() {
               <div className="flex flex-col items-center">
                 <p>Regular price</p>
                 {formData.type === "rent" && (
-                  <span className="text-xs">($ / month)</span>
+                  <span className="text-xs">($ / week)</span>
                 )}
               </div>
             </div>

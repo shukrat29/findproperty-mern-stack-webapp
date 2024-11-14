@@ -41,11 +41,11 @@ const OAuth = () => {
       <button
         onClick={handleGoogleClick}
         type="button"
-        className="bg-red-700 text-white p-3 rounded-sm w-80 uppercase hover:opacity-80"
+        className=" border p-3 rounded-sm w-80 hover:opacity-80"
       >
         <div className="flex items-center justify-center gap-3">
           <img src="./google.png" className="h-6 w-6" />{" "}
-          <p>Sign up with google</p>
+          <p>Continue with google</p>
         </div>
       </button>
     </div>

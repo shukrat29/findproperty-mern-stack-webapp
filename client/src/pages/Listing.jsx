@@ -92,14 +92,14 @@ const Listing = () => {
               {listing.offer
                 ? listing?.discountedPrice?.toLocaleString("en-US")
                 : listing?.regularPrice?.toLocaleString("en-US")}
-              {listing.type === "rent" && "/month"}
+              {listing.type === "rent" && "/ week"}
             </p>
-            <p className="flex items-center mt-4 gap-2 text-slate-700 my-2 text-sm">
+            <p className="flex items-center mt-4 gap-2 text-slate-700 my-2 text-sm hover:text-green-600">
               <FaMapMarkerAlt />
               {listing.address}
             </p>
             <div className="flex gap-4">
-              <p className="bg-red-900 w-full max-w-[160px] text-white text-center p-1 rounded-lg">
+              <p className="bg-red-500 w-full max-w-[160px] text-white text-center p-1 rounded-lg">
                 {listing.type === "rent" ? "For Rent" : "For Sale"}
               </p>
               {listing?.offer && (
@@ -113,7 +113,7 @@ const Listing = () => {
               <h3 className="font-semibold">Description:</h3>
               {listing.description}
             </div>
-            <ul className="text-green-900 font-semibold text-sm flex gap-4 flex-wrap">
+            <ul className="text-slate-700 font-semibold text-sm flex gap-4 flex-wrap">
               <li className="flex items-center gap-2">
                 <FaBed className="text-lg" />
                 <p>
