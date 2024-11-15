@@ -17,8 +17,8 @@ const app = express();
 
 app.use(
   cors({
-    origin: "http://localhost:5173", // Frontend origin
-    credentials: true, // Include credentials if you are using cookies or sessions
+    origin: "http://localhost:5173",
+    credentials: true,
   })
 );
 

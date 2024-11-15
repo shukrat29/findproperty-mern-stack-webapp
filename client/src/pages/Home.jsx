@@ -79,7 +79,7 @@ const Home = () => {
           ))}
       </Swiper>
       {/* listing results for offer, sale and rent max-w-6xl mx-auto */}
-      <div className=" p-8 flex flex-col gap-8 my-10 ">
+      <div className=" px-20 flex flex-col gap-8 my-10 ">
         {offerListings && offerListings.length > 0 && (
           <div className="">
             <div>
