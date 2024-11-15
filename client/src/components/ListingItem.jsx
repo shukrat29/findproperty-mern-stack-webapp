@@ -24,7 +24,7 @@ const ListingItem = ({ listing }) => {
           <p className=" text-sm line-clamp-3">{listing.description}</p>
 
           {listing.offer
-            ? listing.discountPrice?.toLocaleString("en-US")
+            ? listing.discountedPrice?.toLocaleString("en-US")
             : listing.regularPrice?.toLocaleString("en-US")}
           {listing.type === "rent" && "/ week"}
 

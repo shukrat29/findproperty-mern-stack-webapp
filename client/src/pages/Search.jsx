@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ListingItem from "../components/ListingItem";
+import { FaCircleArrowDown } from "react-icons/fa6";
 
 const Search = () => {
   const navigate = useNavigate();
@@ -16,6 +17,7 @@ const Search = () => {
 
   const [loading, setLoading] = useState(false);
   const [listings, setListings] = useState([]);
+  const [showMore, setShowMore] = useState(false);
 
   useEffect(() => {
     const urlParams = new URLSearchParams(location.search);
@@ -49,10 +51,16 @@ const Search = () => {
 
     const fetchListings = async () => {
       setLoading(true);
+      setShowMore(false);
       const searchQuery = urlParams.toString();
       const res = await fetch(`/api/listing/get?${searchQuery}`);
       const data = await res.json();
 
+      if (data.length > 8) {
+        setShowMore(true);
+      } else {
+        setShowMore(false);
+      }
       setListings(data);
       setLoading(false);
     };
@@ -106,6 +114,20 @@ const Search = () => {
 
     const searchQuery = urlParams.toString();
     navigate(`/search?${searchQuery}`);
+  };
+
+  const onShowMoreClick = async () => {
+    const numberOfListings = listings.length;
+    const startIndex = numberOfListings;
+    const urlParams = new URLSearchParams(location.search);
+    urlParams.set("startIndex", startIndex);
+    const searchQuery = urlParams.toString();
+    const res = await fetch(`/api/listing/get?${searchQuery}`);
+    const data = await res.json();
+    if (data.length < 9) {
+      setShowMore(false);
+    }
+    setListings([...listings, ...data]);
   };
 
   return (
@@ -226,6 +248,14 @@ const Search = () => {
               <ListingItem key={listing._id} listing={listing} />
             ))}
         </div>
+        {showMore && (
+          <button
+            className="text-center w-full flex items-center gap-2"
+            onClick={onShowMoreClick}
+          >
+            Show more <FaCircleArrowDown className="text-red-800" />
+          </button>
+        )}
       </div>
     </div>
   );
