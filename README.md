@@ -50,22 +50,22 @@ Follow these steps to run EasyHomeFinder locally:
 
 2. Install dependencies for both the backend and frontend:
 
-# Backend
+### Backend
 
 cd backend  
 npm install
 
-# Frontend
+### Frontend
 
 cd ../client  
 npm install
 
 3. Start the application
 
-# Backend (in the backend folder)
+### Backend (in the backend folder)
 
 npm start
 
-# Frontend (in the frontend folder)
+### Frontend (in the frontend folder)
 
 npm start
