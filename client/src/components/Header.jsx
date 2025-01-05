@@ -32,10 +32,14 @@ const Header = () => {
       <div>
         <Link to="/">
           <h1 className="font-bold text-lg sm:text-xl flex flex-wrap">
-            <span className="text-slate-50">EasyHome</span>
-            <span className="text-slate-50">Finder</span>
+            <span className="text-slate-50">EasyHomeFinder</span>
           </h1>
         </Link>
+      </div>
+      <div>
+        <h1 className="font-bold text-slate-700 text-xl">
+          Discover Your Dream Home with Just a Click!
+        </h1>
       </div>
 
       {/* right side content search and nav items */}

@@ -49,37 +49,47 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="p-2">
+    <div className="">
       {/* top */}
-      <div className="g">
-        <h1 className="font-bold text-slate-700 text-3xl">
-          Discover Your Dream Home with Just a Click! <br />
-          Find It Here!
-        </h1>
-        <br />
-        <Link to={`/search`} className="bg-slate-500 text-white p-2 rounded-md">
-          Start Exploring
-        </Link>
-      </div>
+
       {/* swiper */}
-      <Swiper navigation>
+      <Swiper
+        className="mb-2"
+        navigation
+        spaceBetween={10} // Adds space between slides
+        slidesPerView={1} // Show 1 image per slide
+        loop={true} // Enables infinite looping of slides
+        autoplay={{ delay: 3000 }} // Autoplay feature with a 3-second delay
+        effect="fade" // Smooth fading effect between slides
+        speed={1000} // Transition speed
+        pagination={{ clickable: true }} // Allows clicking on pagination bullets
+      >
         {offerListings &&
           offerListings.length > 0 &&
           offerListings.map((listing) => (
-            <SwiperSlide>
+            <SwiperSlide key={listing._id}>
               <div
                 style={{
                   background: `url(${listing.imageUrls[0]}) center no-repeat`,
                   backgroundSize: "cover",
+                  height: "350px",
+                  borderRadius: "10px", // Rounded corners for the image
+                  boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)", // Subtle shadow effect
+                  position: "relative", // Helps for overlay text (if needed)
                 }}
-                className="h-[500px]"
-                key={listing._id}
-              ></div>
+              >
+                {/* Optionally, you can add text overlays or titles here */}
+              </div>
             </SwiperSlide>
           ))}
       </Swiper>
       {/* listing results for offer, sale and rent max-w-6xl mx-auto */}
-      <div className=" px-20 flex flex-col gap-8 my-10 ">
+      <div>
+        <Link to={`/search`} className="bg-red-500 text-white p-2 rounded-md">
+          Start Exploring
+        </Link>
+      </div>
+      <div className=" px-20 flex flex-col gap-8">
         {offerListings && offerListings.length > 0 && (
           <div className="">
             <div>

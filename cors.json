@@ -1,7 +1,0 @@
-[
-  {
-    "origin": ["https://easyhomefinder.onrender.com/"],
-    "method": ["GET", "HEAD"],
-    "maxAgeSeconds": 3600
-  }
-]
