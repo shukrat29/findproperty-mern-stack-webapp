@@ -1,6 +1,6 @@
-# EasyHomeFinder
+# findproperty
 
-**EasyHomeFinder** is a cutting-edge real estate marketplace built using the MERN stack (MongoDB, Express.js, React, and Node.js) with property listings, user profiles, secure login, and interactive search and filtering for a seamless user experience.
+**findproperty** is a cutting-edge real estate marketplace built using the MERN stack (MongoDB, Express.js, React, and Node.js) with property listings, user profiles, secure login, and interactive search and filtering for a seamless user experience.
 
 ## 🌟 Features
 
